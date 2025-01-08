@@ -1,8 +1,13 @@
-package com.ids.ProgettoIDS.Model
+package com.ids.ProgettoIDS.Model;
+
+import com.ids.ProgettoIDS.Model.Comune;
+import com.ids.ProgettoIDS.Model.Contenuto;
+import com.ids.ProgettoIDS.Model.Posizione;
+import com.ids.ProgettoIDS.Model.TipoContenuto;
 
 import java.util.Date;
 
-public class Evento extends Content {
+public class Evento extends Contenuto {
   private Date dataInizio;
   private Date dataFine;
   private Posizione posizione;
@@ -14,7 +19,7 @@ public Evento (String nome, String descrizione, Date dataCreazione, int IdCreato
   this.dataInizio = dataInizio;
   this.dataFine = dataFine;
   this.posizione= posizione;
-  this.comune = new Comune ();
+  this.comune = new Comune();
   this.comune.setID (comune);
 }
 

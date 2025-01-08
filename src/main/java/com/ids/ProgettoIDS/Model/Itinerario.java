@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Itinerario extends Content{
+public class Itinerario extends Contenuto {
     private int livelloDifficolta;
-    private List<Content> contenuti;
+    private List<Contenuto> contenuti;
 
     public Itinerario(String nome, String descrizione, Date dataCreazione, int IdCreatore, int livelloDifficolta) {
         super(nome, descrizione, dataCreazione, IdCreatore);

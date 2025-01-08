@@ -11,8 +11,8 @@ public class Contest{
     private Date dataFine;
     private String tipo;
     private String regole;
-    private List<Content> contenuti;
-    private Content contenutoVincitore;
+    private List<Contenuto> contenuti;
+    private Contenuto contenutoVincitore;
     private Utente creatore;
 
     public Contest(String nome, String descrizione, Date dataInizio, Date dataFine,

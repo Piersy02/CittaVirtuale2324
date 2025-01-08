@@ -14,7 +14,7 @@ public Notifica(){
 
 public Notifica (String titolo, String dascrizione){
   if (titolo.isBlank() || descrizione.isBlank()){
-    trow new IllegalArgumentException ("titolo o descrizione vuoti");
+    throw new IllegalArgumentException ("titolo o descrizione vuoti");
   }
 
   this.titolo= titolo;

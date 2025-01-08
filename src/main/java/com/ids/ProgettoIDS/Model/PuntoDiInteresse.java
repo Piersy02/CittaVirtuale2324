@@ -2,7 +2,7 @@ package com.ids.ProgettoIDS.Model;
 
 import java.util.Date;
 
-public class PuntoDiInteresse extends Content{
+public class PuntoDiInteresse extends Contenuto {
     private CategoriaPOI categoria;
 
 

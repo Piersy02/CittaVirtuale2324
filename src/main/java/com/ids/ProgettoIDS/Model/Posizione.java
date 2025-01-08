@@ -1,4 +1,4 @@
-package com.ids.ProgettoIDS.Model
+package com.ids.ProgettoIDS.Model;
 
 public class Posizione {
   private float latitudine;
