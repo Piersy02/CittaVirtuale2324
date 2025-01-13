@@ -1,18 +1,33 @@
 package com.ids.ProgettoIDS.Model;
 
-import  java.util.Date;
+import com.ids.ProgettoIDS.Model.Comune;
+import com.ids.ProgettoIDS.Model.TipoContenuto;
+import com.ids.ProgettoIDS.Model.Utente;
+import com.ids.ProgettoIDS.Model.Contenuto;
+import jakarta.persistence.*;
+
+import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name = "Contest")
 public class Contest{
-    int ID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer ID;
     private String nome;
     private String descrizione;
     private Date dataInizio;
     private Date dataFine;
     private String tipo;
     private String regole;
-    private List<Contenuto> contenuti;
-    private Contenuto contenutoVincitore;
+    @ManyToMany
+    private List<Contenunto> contenuti;
+    @ManyToOne
+    private Contenunto contenutoVincitore;
+    @ManyToOne
+    private Comune comune;
+    @ManyToOne
     private Utente creatore;
 
     public Contest(String nome, String descrizione, Date dataInizio, Date dataFine,

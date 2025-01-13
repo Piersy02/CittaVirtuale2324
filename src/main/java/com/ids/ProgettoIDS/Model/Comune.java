@@ -1,11 +1,18 @@
 package com.ids.ProgettoIDS.Model;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "Comune")
 public class Comune {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer ID;
   private String nome;
   private String descrizione;
+  @Embedded
   private Posizione posizione;
   private double area;
   private Date dataFondazione;

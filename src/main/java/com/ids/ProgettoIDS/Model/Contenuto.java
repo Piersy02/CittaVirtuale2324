@@ -1,21 +1,22 @@
 package com.ids.ProgettoIDS.Model;
 
 import jakarta.persistence.*;
-import java.util.Date;
 
+import java.util.Date;
 @Entity
 @Table(name = "Contenuto")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
 public abstract class Contenuto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ID;
-    String nome;
-    String descrizione;
-    Date dataCreazione;
+    String nome = null;
+    String descrizione = null;
+    Date dataCreazione = null;
     @ManyToOne
-    Utente creatore;
-    StatoApprovazione statoApprovazione;
+    Utente creatore = null;
+    StatoApprovazione statoApprovazione = null;
     @ManyToOne
     Comune comune;
 
