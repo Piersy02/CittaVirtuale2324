@@ -23,11 +23,12 @@ public class ContenutoService implements IContenutoService{
         this.puntoDiInteresseRepository = puntoDiInteresseRepository;
         this.eventoRepository = eventoRepository;
     }
+
+    // TODO: fixare l'implementazione dei metodi
     @Override
     public PuntoDiInteresse creaNuovoPuntoDiInteresse(PuntoDiInteresse puntoDiInteresse) {
         return puntoDiInteresseRepository.save(puntoDiInteresse);
     }
-
     @Override
     public Itinerario creaNuovoItinerario(Itinerario itinerario) {
         return itinerarioRepository.save(itinerario);
@@ -43,16 +44,45 @@ public class ContenutoService implements IContenutoService{
         return StreamSupport.stream(eventoRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
-
     @Override
     public List<Itinerario> getAllItinerari() {
         return StreamSupport.stream(itinerarioRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
-
     @Override
     public List<PuntoDiInteresse> getAllPoi() {
         return StreamSupport.stream(puntoDiInteresseRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Evento getEvento(int id) {
+        return eventoRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Itinerario getItinerario(int id) {
+        return itinerarioRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public PuntoDiInteresse getPoi(int id) {
+        return puntoDiInteresseRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void modificaEvento(Evento event) {
+        eventoRepository.save(event);
+    }
+
+    @Override
+    public void modificaPoi(PuntoDiInteresse puntoDiInteresse) {
+        puntoDiInteresseRepository.save(puntoDiInteresse);
+    }
+
+    @Override
+    public void modificaItinerario(Itinerario itinerario) {
+        itinerarioRepository.save(itinerario);
+    }//TODO cambia nomi
+
 }

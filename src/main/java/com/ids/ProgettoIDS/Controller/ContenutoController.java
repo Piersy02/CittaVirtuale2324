@@ -14,40 +14,10 @@ import java.util.List;
 public class ContenutoController {
     private final ContenutoService contenutoService;
 
+    //TODO: Aggiungere approvazioni
+
     public ContenutoController(ContenutoService contenutoService) {
         this.contenutoService = contenutoService;
     }
 
-    @PostMapping("/add/itinerario")
-    public ResponseEntity<Itinerario> creaItinerario(@RequestBody Itinerario itinerario) {
-        Itinerario nuovoItinerario = contenutoService.creaNuovoItinerario(itinerario);
-        return ResponseEntity.ok(nuovoItinerario);
-    }
-
-    @PostMapping("/add/evento")
-    public ResponseEntity<Evento> creaEvento(@RequestBody Evento evento) {
-        Evento nuovoEvento = contenutoService.creaNuovoEvento(evento);
-        return ResponseEntity.ok(nuovoEvento);
-    }
-
-    @PostMapping("/add/poi")
-    public ResponseEntity<PuntoDiInteresse> creaPoi(@RequestBody PuntoDiInteresse puntoDiInteresse) {
-        PuntoDiInteresse nuovoPoi = contenutoService.creaNuovoPuntoDiInteresse(puntoDiInteresse);
-        return ResponseEntity.ok(nuovoPoi);
-    }
-
-    @GetMapping("/getAll/poi")
-    public ResponseEntity<List<PuntoDiInteresse>> getAllPoi() {
-        return ResponseEntity.ok(contenutoService.getAllPoi());
-    }
-
-    @GetMapping("/getAll/eventi")
-    public ResponseEntity<List<Evento>> getAllEventi() {
-        return ResponseEntity.ok(contenutoService.getAllEventi());
-    }
-
-    @GetMapping("/getAll/itinerari")
-    public ResponseEntity<List<Itinerario>> getAllItinerari() {
-        return ResponseEntity.ok(contenutoService.getAllItinerari());
-    }
 }
