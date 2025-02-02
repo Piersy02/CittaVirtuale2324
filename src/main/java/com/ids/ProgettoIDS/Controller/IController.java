@@ -1,5 +1,6 @@
 package com.ids.ProgettoIDS.Controller;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +42,7 @@ public interface IController<T, ID> {
      * @return l'entità modificata all'interno del repository
      */
     @PutMapping
-    ResponseEntity<?> modifica(@RequestBody T entity);
+    ResponseEntity<?> modifica(@RequestBody T entity, @PathVariable ID id);
 
     /**
      * Elimina un entità

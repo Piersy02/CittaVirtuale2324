@@ -1,14 +1,16 @@
 package com.ids.ProgettoIDS.Controller;
 
 import com.ids.ProgettoIDS.Model.Comune;
+import com.ids.ProgettoIDS.Model.DTO.ComuneDTO;
 import com.ids.ProgettoIDS.Model.Utente;
 import com.ids.ProgettoIDS.Services.ComuneService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/coumune")
-public class ComuneController implements  IController<Comune, Integer>{
+public class ComuneController implements  IController<ComuneDTO, Integer>{
     private final ComuneService comuneService;
 
     public ComuneController(ComuneService comuneService) {
@@ -16,27 +18,29 @@ public class ComuneController implements  IController<Comune, Integer>{
     }
 
     @Override
-    public ResponseEntity<?> crea(@RequestBody Comune comune) {
-        Comune nuovoComune= comuneService.creaComune(comune);
+    public ResponseEntity<?> crea(@Valid @RequestBody ComuneDTO comune) {
+        Comune nuovoComune= comuneService.creaComune(comune.toComune());
         return ResponseEntity.ok(nuovoComune);
     }
     @Override
-    public ResponseEntity<?> getById(Integer integer) {
-        return null;//TODO Da Implementare
+    public ResponseEntity<?> getById(Integer id) {
+        return ResponseEntity.ok(comuneService.getAll());
     }
 
     @Override
     public ResponseEntity<?> getAll() {
-        return null;//TODO Da Implementare
+        return ResponseEntity.ok(comuneService.getAll());
     }
 
     @Override
-    public ResponseEntity<?> modifica(Comune entity) {
-        return null;//TODO Da Implementare
+    public ResponseEntity<?> modifica(ComuneDTO comune, Integer id) {
+
+        return ResponseEntity.ok(comuneService.modificaComune(comune.toComune(),id));
     }
 
     @Override
-    public ResponseEntity<?> elimina(Integer integer) {
-        return null;//TODO Da Implementare
+    public ResponseEntity<?> elimina(@PathVariable("id") Integer id) {
+        comuneService.elimina(id);
+        return ResponseEntity.ok("Comune eliminato correttamente");
     }
 }

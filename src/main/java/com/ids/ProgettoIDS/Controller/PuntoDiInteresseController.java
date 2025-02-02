@@ -1,12 +1,19 @@
 package com.ids.ProgettoIDS.Controller;
 
+import com.ids.ProgettoIDS.Model.DTO.PuntoDiInteresseDTO;
 import com.ids.ProgettoIDS.Model.PuntoDiInteresse;
 import com.ids.ProgettoIDS.Services.ContenutoService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-public class PuntoDiInteresseController implements IController<PuntoDiInteresse, Integer>{
+public class PuntoDiInteresseController implements IController<PuntoDiInteresseDTO, Integer>{
 
     private final ContenutoService contenutoService;
 
@@ -14,8 +21,8 @@ public class PuntoDiInteresseController implements IController<PuntoDiInteresse,
         this.contenutoService = contenutoService;
     }
     @Override
-    public ResponseEntity<PuntoDiInteresse> crea(PuntoDiInteresse entity) {
-        PuntoDiInteresse nuovoPuntoDiInteresse = contenutoService.creaNuovoPuntoDiInteresse(entity);
+    public ResponseEntity<PuntoDiInteresse> crea(@Valid PuntoDiInteresseDTO puntoDiInteresse) {
+        PuntoDiInteresse nuovoPuntoDiInteresse = contenutoService.creaNuovoPuntoDiInteresse(puntoDiInteresse.toPuntoDiInteresse());
         return ResponseEntity.ok(nuovoPuntoDiInteresse);
     }
     @Override
@@ -29,13 +36,13 @@ public class PuntoDiInteresseController implements IController<PuntoDiInteresse,
     }
 
     @Override
-    public ResponseEntity<?> modifica(PuntoDiInteresse entity) {
-        contenutoService.modificaPoi(entity);
+    public ResponseEntity<?> modifica(PuntoDiInteresseDTO puntoDiInteresse,Integer id) {
+        contenutoService.modificaPoi(puntoDiInteresse.toPuntoDiInteresse());
         return ResponseEntity.ok("{}");
     }
 
     @Override
-    public ResponseEntity<?> elimina(Integer aLong) {
-        return null;//TODO Da Implementare
+    public ResponseEntity<?> elimina(@PathVariable("id") Integer id) {
+        return ResponseEntity.badRequest().body("Non Implementato");
     }
 }
