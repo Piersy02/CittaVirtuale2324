@@ -21,4 +21,7 @@ public interface IContenutoService {
     void modificaEvento(Evento event);
     void modificaPoi(PuntoDiInteresse pointOfInterest);
     void modificaItinerario(Itinerario itinerary);
+    void approvaItinerario(Integer id);
+    void approvaPuntoDiInteresse(Integer id);
+    void approvaEvento(Integer id);
 }

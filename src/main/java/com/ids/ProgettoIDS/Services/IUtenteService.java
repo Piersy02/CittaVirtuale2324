@@ -10,7 +10,7 @@ public interface IUtenteService {
      * @param utente l'utente da creare
      * @return il nuovo utente aggiunto al repository
      */
-    Utente creaUtente(Utente utente);
+    Utente creaUtente(Utente utente, Integer IdComune, int ruolo);
 
     /**
      * Restituisce tutti gli utenti presenti nel repository
@@ -23,5 +23,10 @@ public interface IUtenteService {
      * @param id l'ID dell'utente che si vuole ottenere
      * @return l'utente in base al suo id
      */
-    Utente getUtente(int id);
+    Utente getUtente(Integer id);
+    /**
+     * Elimina un utente
+     * @param id l'id dell'utente da eliminare
+     */
+    void eliminaUtente(Integer id);
 }
