@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @EntityScan(basePackages = {"com.ids.ProgettoIDS.Model"})
 public class Application {
     public static void main(String[] args) {
+
         SpringApplication.run(Application.class, args);
     }
 }
