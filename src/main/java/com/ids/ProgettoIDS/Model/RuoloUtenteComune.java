@@ -1,9 +1,20 @@
 package com.ids.ProgettoIDS.Model;
 
+import jakarta.persistence.*;
+
+/**
+ * Classe che si occupa di gestire i ruoli degli utenti all'intero di un comune
+ */
+@Entity
+@Table(name="RuoloUtenteComune")
 public class RuoloUtenteComune {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer ID;
+  @ManyToOne
   private Comune comune;
   private RuoloUtente ruolo;
+  @ManyToOne
   private Utente utente;
 
 public void setRuolo (RuoloUtente ruolo){
@@ -20,7 +31,7 @@ public RuoloUtenteComune (Comune comune, RuoloUtente ruolo, Utente utente){
   }
 
 public RuoloUtente getRuolo(){
-  return comune;
+  return ruolo;
 }
 
 public Comune getComune(){
