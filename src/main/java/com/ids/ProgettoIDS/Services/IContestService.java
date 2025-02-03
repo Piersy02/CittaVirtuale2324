@@ -10,7 +10,7 @@ public interface IContestService {
      * @param contest il nuovo contest da creare
      * @return il nuovo contest salvato nel repository
      */
-    Contest creaContest(Contest contest);
+    Contest creaContest(Contest contest, List<Integer> contenuti);
 
     Contest getContest(Integer id);
 

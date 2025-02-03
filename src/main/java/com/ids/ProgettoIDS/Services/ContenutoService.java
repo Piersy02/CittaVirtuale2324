@@ -20,7 +20,7 @@ public class ContenutoService implements IContenutoService{
     private final RuoliComuneRepository ruoliComuneRepository;
     private final ContenutoRepository contenutoRepository;
 
-    public ContenutoService(ItinerarioRepository itinerarioRepository, PuntoDiInteresseRepository puntoDiInteresseRepository, EventoRepository eventoRepository) {
+    public ContenutoService(ItinerarioRepository itinerarioRepository, PuntoDiInteresseRepository puntoDiInteresseRepository, EventoRepository eventoRepository, UtenteRepository utenteRepository, ComuneRepository comuneRepository, RuoliComuneRepository ruoliComuneRepository, ContenutoRepository contenutoRepository) {
         this.itinerarioRepository = itinerarioRepository;
         this.puntoDiInteresseRepository = puntoDiInteresseRepository;
         this.eventoRepository = eventoRepository;
@@ -52,7 +52,6 @@ public class ContenutoService implements IContenutoService{
 
         return Optional.empty();
     }
-    // TODO: fixare l'implementazione dei metodi
     @Override
     public PuntoDiInteresse creaNuovoPuntoDiInteresse(PuntoDiInteresse puntoDiInteresse) {
         if (puntoDiInteresse == null) {
@@ -72,7 +71,7 @@ public class ContenutoService implements IContenutoService{
         return puntoDiInteresseRepository.save(puntoDiInteresse);
     }
     @Override
-    public Itinerario creaNuovoItinerario(Itinerario itinerario) {
+    public Itinerario creaNuovoItinerario(Itinerario itinerario,  List<Integer> contenuti) {
         if (itinerario == null) {
             throw new IllegalArgumentException("Errore: l'itinerario è nullo");
         }
@@ -94,6 +93,7 @@ public class ContenutoService implements IContenutoService{
         itinerario.setStatoApprovazione(approvazioneDefaultUtente(itinerario.getCreatore().getID(), itinerario.getComune().getID())
                 .orElseThrow(() -> new IllegalArgumentException("Errore: l'utente non ha i permessi sufficienti " +
                         "per creare un nuovo itinerario")));
+
         return itinerarioRepository.save(itinerario);
     }
 

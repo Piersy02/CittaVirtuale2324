@@ -10,7 +10,7 @@ import java.util.List;
 public interface IContenutoService {
 
     PuntoDiInteresse creaNuovoPuntoDiInteresse(PuntoDiInteresse puntoDiInteresse);
-    Itinerario creaNuovoItinerario (Itinerario itinerario);
+    Itinerario creaNuovoItinerario (Itinerario itinerario,List<Integer> contenuti);
     Evento creaNuovoEvento(Evento evento);
     List<Evento> getAllEventi();
     List<Itinerario> getAllItinerari();

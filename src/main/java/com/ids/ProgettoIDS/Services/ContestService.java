@@ -25,8 +25,7 @@ public class ContestService implements IContestService{
     private final NotificaRepository notificaRepository;
 
     public ContestService(ContestRepository contestRepository, RuoliComuneService ruoliComuneService,
-                          ComuneService comuneService, UtenteService utenteService,
-                          ContenutoService contenutoService, ContenutoRepository contenutoRepository,
+                          ComuneService comuneService, UtenteService utenteService, ContenutoRepository contenutoRepository,
                           UtenteRepository utenteRepository, NotificaRepository notificaRepository) {
         this.contestRepository = contestRepository;
         this.ruoliComuneService = ruoliComuneService;

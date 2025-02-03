@@ -17,7 +17,7 @@ public class UtenteService implements IUtenteService{
     private final ComuneRepository comuneRepository;
     private final RuoliComuneService ruoliComuneService;
 
-    public UtenteService(UtenteRepository utenteRepository) {
+    public UtenteService(UtenteRepository utenteRepository, ComuneRepository comuneRepository, RuoliComuneService ruoliComuneService) {
         this.utenteRepository = utenteRepository;
         this.comuneRepository = comuneRepository;
         this.ruoliComuneService = ruoliComuneService;

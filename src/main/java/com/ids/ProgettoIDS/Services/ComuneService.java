@@ -11,7 +11,7 @@ import java.util.stream.StreamSupport;
 public class ComuneService implements IComuneService {
     private  final ContenutoService contenutoService;
     private final ComuneRepository comuneRepository;
-    public ComuneService(ComuneRepository comuneRepository) {
+    public ComuneService(ContenutoService contenutoService, ComuneRepository comuneRepository) {
         this.contenutoService = contenutoService;
         this.comuneRepository = comuneRepository;
     }
