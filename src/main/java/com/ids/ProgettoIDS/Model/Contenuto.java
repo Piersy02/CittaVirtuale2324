@@ -11,12 +11,12 @@ public abstract class Contenuto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ID;
-    String nome = null;
-    String descrizione = null;
-    Date dataCreazione = null;
+    String nome;
+    String descrizione;
+    Date dataCreazione;
     @ManyToOne
-    Utente creatore = null;
-    StatoApprovazione statoApprovazione = null;
+    Utente creatore;
+    StatoApprovazione statoApprovazione;
     @ManyToOne
     Comune comune;
 
@@ -31,7 +31,6 @@ public abstract class Contenuto {
     public Contenuto(){
 
     }
-
     public Utente getCreatore() {
         return creatore;
     }
