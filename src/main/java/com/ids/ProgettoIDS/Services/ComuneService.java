@@ -2,10 +2,12 @@ package com.ids.ProgettoIDS.Services;
 
 import com.ids.ProgettoIDS.Model.Comune;
 import com.ids.ProgettoIDS.Repositories.ComuneRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class ComuneService implements IComuneService {
@@ -23,8 +25,8 @@ public class ComuneService implements IComuneService {
 
     @Override
     public List<Comune> getAll() {
-        return StreamSupport.stream(comuneRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+
+        return (List<Comune>) comuneRepository.findAll();
     }
     @Override
     public Comune getById(Integer id) {
@@ -33,14 +35,19 @@ public class ComuneService implements IComuneService {
     }
 
     @Override
+    @Transactional
     public Comune modificaComune(Comune comune, Integer id) {
+        Comune existingComune = comuneRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Errore: comune non trovato"));
 
-        comuneRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Errore: comune non trovato"));
-        comune.setID(id);
-        comuneRepository.save(comune);
+        // Aggiorna solo i campi necessari senza sovrascrivere tutto
+        existingComune.setNome(comune.getNome());
+        existingComune.setDescrizione(comune.getDescrizione());
+        existingComune.setPosizione(comune.getPosizione());
+        existingComune.setArea(comune.getArea());
+        existingComune.setDataFondazione(comune.getDataFondazione());
 
-        return comune;
+        return comuneRepository.save(existingComune);
     }
 
     @Override

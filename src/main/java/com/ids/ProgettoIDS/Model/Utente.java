@@ -1,5 +1,6 @@
 package com.ids.ProgettoIDS.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -14,6 +15,7 @@ public class Utente {
     private String username;
     private String nomeCompleto;
     private String email;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date dataRegistrazione;
     @OneToMany
     private List<Notifica> notifiche;
