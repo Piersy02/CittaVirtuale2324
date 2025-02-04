@@ -6,6 +6,7 @@ import com.ids.ProgettoIDS.Services.ContenutoService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,19 +21,24 @@ public class EventoController implements IController<EventoDTO, Integer> {
         this.contenutoService = contenutoService;
     }
     @Override
-    public ResponseEntity<Evento> crea(@Valid EventoDTO evento) {
+    public ResponseEntity<EventoDTO> crea(@Valid @RequestBody EventoDTO evento) {
         Evento nuovoEvento = contenutoService.creaNuovoEvento(evento.toEvento());
-        return ResponseEntity.ok(nuovoEvento);
+        return ResponseEntity.ok(new EventoDTO(nuovoEvento));
     }
 
     @Override
-    public ResponseEntity<Evento> getById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(contenutoService.getEvento(id));
+    public ResponseEntity<EventoDTO> getById(@PathVariable("id") Integer id) {
+        Evento evento = contenutoService.getEvento(id);
+        return ResponseEntity.ok(new EventoDTO(evento));
     }
 
     @Override
-    public ResponseEntity<List<Evento>> getAll() {
-        return ResponseEntity.ok(contenutoService.getAllEventi());
+    public ResponseEntity<List<EventoDTO>> getAll() {
+        List<EventoDTO> eventiDTO = contenutoService.getAllEventi()
+                .stream()
+                .map(EventoDTO::new) //Converte ogni Evento in un DTO
+                .toList();
+        return ResponseEntity.ok(eventiDTO);
     }
 
     @Override

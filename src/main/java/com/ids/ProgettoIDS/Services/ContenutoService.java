@@ -133,6 +133,7 @@ public class ContenutoService implements IContenutoService{
 
     @Override
     public Evento getEvento(int id) {
+
         return eventoRepository.findById(id).orElse(null);
     }
 

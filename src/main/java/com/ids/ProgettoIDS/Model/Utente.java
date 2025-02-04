@@ -56,5 +56,4 @@ public class Utente {
 
         this.notifiche.add(notifica);
     }
-
 }
