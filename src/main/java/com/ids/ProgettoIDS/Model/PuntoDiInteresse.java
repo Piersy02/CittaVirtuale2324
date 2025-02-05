@@ -27,4 +27,20 @@ public class PuntoDiInteresse extends Contenuto {
     public TipoContenuto getTipoContenuto(){
         return TipoContenuto.PUNTO_DI_INTERESSE;
     }
+
+    public CategoriaPOI getCategoria() {
+        return categoria;
+    }
+
+    public Posizione getPosizione() {
+        return posizione;
+    }
+
+    public void setCategoria(CategoriaPOI categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setPosizione(Posizione posizione) {
+        this.posizione = posizione;
+    }
 }

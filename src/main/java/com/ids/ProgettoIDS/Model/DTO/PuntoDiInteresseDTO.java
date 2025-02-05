@@ -16,8 +16,14 @@ public class PuntoDiInteresseDTO extends ContenutoDTO{
         this.categoria = categoria;
         this.posizione = posizione;
     }
-    public PuntoDiInteresseDTO(){
+    public PuntoDiInteresseDTO() {
+        super(null, null, null, null, null);
+    }
 
+    public PuntoDiInteresseDTO(PuntoDiInteresse poi) {
+        super(poi.getNome(), poi.getDescrizione(), poi.getDataCreazione(), poi.getCreatore().getID(), poi.getComune().getID());
+        this.categoria = poi.getCategoria();
+        this.posizione = poi.getPosizione();
     }
     public PuntoDiInteresse toPuntoDiInteresse(){
         return new PuntoDiInteresse(
