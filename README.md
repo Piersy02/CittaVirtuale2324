@@ -38,5 +38,5 @@ mvn clean install
 java -jar .\target\ProgettoIDS-0.0.1-SNAPSHOT.jar
 - Una volta avviato il server, puoi accedere alla documentazione delle API tramite Swagger visitando:
 http://localhost:8080/swagger-ui/index.html
-- Per visualizzare il DB
+- Per visualizzare il DB, le info relative al login sono contenute nella classe application.properties
 http://localhost:8080/h2-console
