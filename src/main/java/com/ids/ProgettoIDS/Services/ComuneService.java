@@ -47,7 +47,7 @@ public class ComuneService implements IComuneService {
         existingComune.setArea(comune.getArea());
         existingComune.setDataFondazione(comune.getDataFondazione());
 
-        return comuneRepository.save(existingComune);
+        
     }
 
     @Override
