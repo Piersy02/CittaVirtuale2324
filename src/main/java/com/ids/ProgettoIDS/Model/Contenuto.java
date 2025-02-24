@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 @Entity
-@Table(name = "Contenuto")
+@Table(name = "ontenuto")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 
 public abstract class Contenuto {
