@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/coumune")
+@RequestMapping("/comune")
 public class ComuneController implements  IController<ComuneDTO, Integer>{
     private final ComuneService comuneService;
 
