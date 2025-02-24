@@ -2,8 +2,6 @@ package com.ids.ProgettoIDS.Services;
 
 import com.ids.ProgettoIDS.Model.*;
 
-import java.util.Date;
-import java.util.List;
 
 public interface IRicercaService {
     List<Contest> ricercaContest(String nome, Date dataInizio, Date dataFine, String tipo);
